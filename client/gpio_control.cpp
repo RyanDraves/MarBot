@@ -42,30 +42,30 @@ public:
     void forward()
     {
         digitalWrite(lpin_1, HIGH);
-        digitalWrite(lpin_2, HIGH);
+        digitalWrite(lpin_2, LOW);
         digitalWrite(rpin_1, HIGH);
-        digitalWrite(rpin_2, HIGH);
+        digitalWrite(rpin_2, LOW);
     };
     void left()
     {
         digitalWrite(lpin_1, LOW);
-        digitalWrite(lpin_2, LOW);
+        digitalWrite(lpin_2, HIGH);
         digitalWrite(rpin_1, HIGH);
-        digitalWrite(rpin_2, HIGH);
+        digitalWrite(rpin_2, LOW);
     };
     void backward()
     {
         digitalWrite(lpin_1, LOW);
-        digitalWrite(lpin_2, LOW);
+        digitalWrite(lpin_2, HIGH);
         digitalWrite(rpin_1, LOW);
-        digitalWrite(rpin_2, LOW);
+        digitalWrite(rpin_2, HIGH);
     };
     void right()
     {
         digitalWrite(lpin_1, HIGH);
-        digitalWrite(lpin_2, HIGH);
+        digitalWrite(lpin_2, LOW);
         digitalWrite(rpin_1, LOW);
-        digitalWrite(rpin_2, LOW);
+        digitalWrite(rpin_2, HIGH);
     };
 };
 
