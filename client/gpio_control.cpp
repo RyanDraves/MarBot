@@ -14,10 +14,10 @@ public:
     int rpin_2;
     Robot()
     {
-        lpin_1 = 7;
-        lpin_2 = 8;
-        rpin_1 = 9;
-        rpin_2 = 10;
+        lpin_1 = 8;
+        lpin_2 = 7;
+        rpin_1 = 10;
+        rpin_2 = 9;
 	pinMode(lpin_1, OUTPUT);
 	pinMode(lpin_2, OUTPUT);
 	pinMode(rpin_1, OUTPUT);
@@ -86,7 +86,7 @@ public:
 
 int main(int argc, char **argv)
 {
-    wiringPiSetup();
+    wiringPiSetupGpio();
     Robot robot;
 
     int input;
