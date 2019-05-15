@@ -7,16 +7,17 @@ using std::endl;
 
 class Robot
 {
-    int lpin1;
-    int lpin2;
-    int rpin1;
-    int rpin2;
+public:
+    int lpin_1;
+    int lpin_2;
+    int rpin_1;
+    int rpin_2;
     Robot()
     {
-        lpin1 = 7;
-        lpin2 = 8;
-        rpin1 = 9;
-        rpin2 = 10;
+        lpin_1 = 7;
+        lpin_2 = 8;
+        rpin_1 = 9;
+        rpin_2 = 10;
     };
     void update_controls(int input)
     {
@@ -40,31 +41,31 @@ class Robot
     };
     void forward()
     {
-        digitialWrite(lpin_1, HIGH);
-        digitialWrite(lpin_2, HIGH);
-        digitialWrite(rpin_1, HIGH);
-        digitialWrite(rpin_2, HIGH);
+        digitalWrite(lpin_1, HIGH);
+        digitalWrite(lpin_2, HIGH);
+        digitalWrite(rpin_1, HIGH);
+        digitalWrite(rpin_2, HIGH);
     };
     void left()
     {
-        digitialWrite(lpin_1, LOW);
-        digitialWrite(lpin_2, LOW);
-        digitialWrite(rpin_1, HIGH);
-        digitialWrite(rpin_2, HIGH);
+        digitalWrite(lpin_1, LOW);
+        digitalWrite(lpin_2, LOW);
+        digitalWrite(rpin_1, HIGH);
+        digitalWrite(rpin_2, HIGH);
     };
     void backward()
     {
-        digitialWrite(lpin_1, LOW);
-        digitialWrite(lpin_2, LOW);
-        digitialWrite(rpin_1, LOW);
-        digitialWrite(rpin_2, LOW);
+        digitalWrite(lpin_1, LOW);
+        digitalWrite(lpin_2, LOW);
+        digitalWrite(rpin_1, LOW);
+        digitalWrite(rpin_2, LOW);
     };
     void right()
     {
-        digitialWrite(lpin_1, HIGH);
-        digitialWrite(lpin_2, HIGH);
-        digitialWrite(rpin_1, LOW);
-        digitialWrite(rpin_2, LOW);
+        digitalWrite(lpin_1, HIGH);
+        digitalWrite(lpin_2, HIGH);
+        digitalWrite(rpin_1, LOW);
+        digitalWrite(rpin_2, LOW);
     };
 };
 
@@ -79,7 +80,7 @@ int main(int argc, char **argv)
         input = getchar();
         robot.update_controls(input);
     }
-    while (c != 'q');
+    while (input != 'q');
 
     return 0;
 }

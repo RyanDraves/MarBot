@@ -1,2 +1,3 @@
-cd ..
-g++ -Wall -o bin/gpio_control.o gpio_control.cpp -lwiringPi
+#!/bin/bash
+
+g++ -Wall -std=c++11 gpio_control.cpp -o bin/gpio_control.o -lwiringPi
