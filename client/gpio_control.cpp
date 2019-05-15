@@ -75,6 +75,13 @@ public:
         digitalWrite(rpin_1, LOW);
         digitalWrite(rpin_2, HIGH);
     };
+    ~Robot()
+    {
+        digitalWrite(lpin_1, LOW);
+        digitalWrite(lpin_2, LOW);
+        digitalWrite(rpin_1, LOW);
+        digitalWrite(rpin_2, LOW);
+    };
 };
 
 int main(int argc, char **argv)
