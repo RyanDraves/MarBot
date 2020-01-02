@@ -39,9 +39,20 @@ public:
             case 'd':
                 right();
                 break;
+            case 'e':
+                stop();
+                break;
             default:
                 break;
         }
+    };
+    void stop()
+    {
+        cout << "stopped" << endl;
+        digitalWrite(lpin_1, LOW);
+        digitalWrite(lpin_2, LOW);
+        digitalWrite(rpin_1, LOW);
+        digitalWrite(rpin_2, LOW);
     };
     void forward()
     {

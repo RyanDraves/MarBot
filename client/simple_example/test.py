@@ -40,15 +40,15 @@ def loop():
 	while True:
 		input = getch()
 		if input == "w":
-                    robby.forward(0.4)
+                    robby.forward(1.0)
 		elif input == "a":
-                    robby.left(0.4)
-               	elif input == "s":
-                    robby.backward(0.4)
+                    robby.left(1.0)
+		elif input == "s":
+                    robby.backward(1.0)
 		elif input == "d":
-		    robby.right(0.4)
+		    robby.right(1.0)
 		elif input == "q":
-                    throw KeyboardInterrupt
+                    break
 		else:
 		    robby.forward(0.0)
 		#motor.start(10)
