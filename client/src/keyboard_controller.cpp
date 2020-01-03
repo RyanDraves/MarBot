@@ -6,20 +6,6 @@
 Controller::Controller()
     : controller_context_(new ControllerContext())
 {
-    //Some test initializations
-    auto leftPress = [&]()
-    {
-        // Left press lambda
-        int debug=0;
-    };
-    auto leftRelease = [&]()
-    {
-        // Left release lambda
-        int debug=0;
-    };
-
-    SetPressCallback(SDL_SCANCODE_LEFT, leftPress);
-    SetReleaseCallback(SDL_SCANCODE_LEFT, leftRelease);
 }
 
 bool Controller::OnKeyPress(const SDL_Event &e)

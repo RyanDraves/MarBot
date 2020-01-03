@@ -23,6 +23,7 @@ private:
 
 class MotorException : public CustomException
 {
+public:
     MotorException(const string error_msg = "Motor Exception") : CustomException(error_msg) {}
 };
 

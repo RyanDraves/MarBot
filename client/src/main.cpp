@@ -41,14 +41,14 @@ int main(int argc, char **argv)
 
     // Bind keyboard methods
     Robot robot;
-    keycontroller.SetPressCallback(SDL_SCANCODE_W, std::bind(&Robot::onForwardPress, robot));
-    keycontroller.SetReleaseCallback(SDL_SCANCODE_W, std::bind(&Robot::onForwardRelease, robot));
-    keycontroller.SetPressCallback(SDL_SCANCODE_D, std::bind(&Robot::onRightPress, robot));
-    keycontroller.SetReleaseCallback(SDL_SCANCODE_D, std::bind(&Robot::onRightRelease, robot));
-    keycontroller.SetPressCallback(SDL_SCANCODE_S, std::bind(&Robot::onBackwardPress, robot));
-    keycontroller.SetReleaseCallback(SDL_SCANCODE_S, std::bind(&Robot::onBackwardRelease, robot));
-    keycontroller.SetPressCallback(SDL_SCANCODE_A, std::bind(&Robot::onLeftPress, robot));
-    keycontroller.SetReleaseCallback(SDL_SCANCODE_A, std::bind(&Robot::onLeftRelease, robot));
+    keycontroller.SetPressCallback(SDL_SCANCODE_W, std::bind(&Robot::onForwardPress, &robot));
+    keycontroller.SetReleaseCallback(SDL_SCANCODE_W, std::bind(&Robot::onForwardRelease, &robot));
+    keycontroller.SetPressCallback(SDL_SCANCODE_D, std::bind(&Robot::onRightPress, &robot));
+    keycontroller.SetReleaseCallback(SDL_SCANCODE_D, std::bind(&Robot::onRightRelease, &robot));
+    keycontroller.SetPressCallback(SDL_SCANCODE_S, std::bind(&Robot::onBackwardPress, &robot));
+    keycontroller.SetReleaseCallback(SDL_SCANCODE_S, std::bind(&Robot::onBackwardRelease, &robot));
+    keycontroller.SetPressCallback(SDL_SCANCODE_A, std::bind(&Robot::onLeftPress, &robot));
+    keycontroller.SetReleaseCallback(SDL_SCANCODE_A, std::bind(&Robot::onLeftRelease, &robot));
 
     bool running = true;
     while (running)

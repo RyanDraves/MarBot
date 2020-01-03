@@ -3,29 +3,27 @@
 
 #include <vector>
 #include <cmath>
+#include <iostream>
 
 #include "motor.h"
 
-enum DIRECTION = { FOWARD, LEFT, BACKWARD, RIGHT };
+enum DIRECTION { FORWARD, LEFT, BACKWARD, RIGHT };
 
 class Robot
 {
 public:
-    Robot() : 
+    Robot() :
         l_motor_(8, 7),
-        r_motor_(9, 10)
+        r_motor_(9, 10),
+        direction_(4, false)
     {
-        direction_.resize(4);
-        for (bool &e : direction_) {
-            e = false;
-        }
     }
-    Robot(int l_1, int l_2, int r_1, int r_2)
+    Robot(int l_1, int l_2, int r_1, int r_2) :
+        l_motor_(l_1, l_2),
+        r_motor_(r_1, r_2)
     {
-        l_motor_(l_1, l_2);
-        r_motor_(r_1, r_2);
     }
-    void update_controls()
+    void updateControls()
     {
         int forward = 0;
         int side = 0;
@@ -36,17 +34,18 @@ public:
         if (direction_[LEFT]) side -= 1;
 
         // Normalize the output
-        int sum = std::abs(foward) + std::abs(side);
+        int sum = std::abs(forward) + std::abs(side);
 
-        double forward_val = static_cast<double>(forward / sum);
-        double side_val = static_cast<double>(side / sum);
+        double forward_val = sum > 0 ? static_cast<double>(forward / sum) : 0;
+        double side_val = sum > 0 ? static_cast<double>(side / sum) : 0;
 
+        std::cerr << "left: " << forward_val + side_val << " right: " << forward_val - side_val << std::endl;
         l_motor_.set(forward_val + side_val);
-        r_motor_.set(forward_val + side_val);
+        r_motor_.set(forward_val - side_val);
     }
     void onForwardPress()
     {
-        direction_[FOWARD] = true;
+        direction_[FORWARD] = true;
     }
     void onForwardRelease()
     {

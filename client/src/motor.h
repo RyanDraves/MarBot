@@ -16,6 +16,11 @@ public:
         pinMode(f_pin_, OUTPUT);
         pinMode(b_pin_, OUTPUT);
     }
+    ~Motor()
+    {
+        digitalWrite(f_pin_, LOW);
+        digitalWrite(b_pin_, LOW);
+    }
     void set(double val)
     {
         check_invariants(val);
@@ -35,11 +40,6 @@ private:
     {
         if (val > 1 || val < -1)
             throw MotorException("Motor values are between -1 and 1");
-    }
-    ~Motor()
-    {
-        digitalWrite(f_pin_, LOW);
-        digitalWrite(b_pin_, LOW);
     }
 };
 
