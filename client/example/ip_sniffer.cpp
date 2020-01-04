@@ -11,5 +11,9 @@ bool callback(const Tins::PDU &pdu) {
 }
 
 int main(int argc, char **argv) {
-    Tins::Sniffer("wifi0").sniff_loop(callback);
+    Tins::SnifferConfiguration config;
+    config.set_filter("port 4099");
+    config.set_promisc_mode(true);
+    config.set_snap_len(400);
+    Tins::Sniffer("wlan0", config).sniff_loop(callback);
 }
