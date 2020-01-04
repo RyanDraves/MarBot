@@ -1,1 +1,1 @@
-./bin/gpio_control.o
+./bin/client.o

@@ -2,6 +2,7 @@
 #define MOTOR_H
 
 #include <wiringPi.h>
+
 #include "custom_exceptions.h"
 
 class Motor

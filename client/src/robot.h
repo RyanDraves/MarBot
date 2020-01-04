@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <cmath>
+#include <string>
 #include <iostream>
 
 #include "motor.h"
@@ -15,16 +16,14 @@ public:
     Robot() :
         l_motor_(8, 7),
         r_motor_(9, 10),
-        direction_(4, false)
-    {
-    }
+        direction_(4, false) {}
     Robot(int l_1, int l_2, int r_1, int r_2) :
         l_motor_(l_1, l_2),
-        r_motor_(r_1, r_2)
+        r_motor_(r_1, r_2) {}
+    bool updateControls(const std::string &state_cmds)
     {
-    }
-    void updateControls()
-    {
+        bool running = processCmds(state_cmds);
+
         int forward = 0;
         int side = 0;
 
@@ -42,40 +41,54 @@ public:
         std::cerr << "left: " << forward_val + side_val << " right: " << forward_val - side_val << std::endl;
         l_motor_.set(forward_val + side_val);
         r_motor_.set(forward_val - side_val);
-    }
-    void onForwardPress()
-    {
-        direction_[FORWARD] = true;
-    }
-    void onForwardRelease()
-    {
-        direction_[FORWARD] = false;
-    }
-    void onRightPress()
-    {
-        direction_[RIGHT] = true;
-    }
-    void onRightRelease()
-    {
-        direction_[RIGHT] = false;
-    }
-    void onBackwardPress()
-    {
-        direction_[BACKWARD] = true;
-    }
-    void onBackwardRelease()
-    {
-        direction_[BACKWARD] = false;
-    }
-    void onLeftPress()
-    {
-        direction_[LEFT] = true;
-    }
-    void onLeftRelease()
-    {
-        direction_[LEFT] = false;
+
+        return running;
     }
 private:
+    bool processCmds(const std::string &std_cmds) {
+        bool q_flag = false;
+        for (const auto &cmd : std_cmds) {
+            switch (cmd) {
+                case 'q':
+                {
+                    direction_[W] = false;
+                    direction_[A] = false;
+                    direction_[S] = false;
+                    direction_[D] = false;
+                    q_flag = true;
+                    break;
+                }
+                case 'w':
+                    direction_[W] = true;
+                    break;
+                case 'W':
+                    direction_[W] = false;
+                    break;
+                case 'a':
+                    direction_[A] = true;
+                    break;
+                case 'A':
+                    direction_[A] = false;
+                    break;
+                case 's':
+                    direction_[S] = true;
+                    break;
+                case 'S':
+                    direction_[S] = false;
+                    break;
+                case 'd':
+                    direction_[D] = true;
+                    break;
+                case 'D':
+                    direction_[D] = false;
+                    break;
+            }
+            if (q_flag) break;
+        }
+        if (q_flag) return false;
+        return true;
+    }
+
     Motor l_motor_;
     Motor r_motor_;
 

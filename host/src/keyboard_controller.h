@@ -21,14 +21,14 @@ public:
 
     bool OnKeyRelease(const SDL_Event &e);
 
-    // TODO: Add functionality for SetPressOnce by keeping track of held keys
-
     // Clear by setting empty func
     void SetReleaseCallback(SDL_Scancode code, const ControllerContext::KeyboardFunc_t & func);
     void SetPressCallback(SDL_Scancode code, const ControllerContext::KeyboardFunc_t & func);
+    void SetPressOnceCallback(SDL_Scancode code, const ControllerContext::KeyboardFunc_t & func);
 
     // Clear both press and release
-    void ClearCallback(SDL_Scancode code);
+    // TODO: Make this clear a specific callback and not just all of them... pass in func again?
+    void ClearCallbacks(SDL_Scancode code);
 
 protected:
     ControllerContext_ptr controller_context_;
