@@ -35,10 +35,10 @@ public:
         // Normalize the output
         int sum = std::abs(forward) + std::abs(side);
 
-        double forward_val = sum > 0 ? static_cast<double>(forward / sum) : 0;
-        double side_val = sum > 0 ? static_cast<double>(side / sum) : 0;
+        double forward_val = sum > 0 ? static_cast<double>(forward) / sum : 0;
+        double side_val = sum > 0 ? static_cast<double>(side) / sum : 0;
 
-        std::cerr << "left: " << forward_val + side_val << " right: " << forward_val - side_val << std::endl;
+        // std::cerr << "left: " << forward_val + side_val << " right: " << forward_val - side_val << std::endl;
         l_motor_.set(forward_val + side_val);
         r_motor_.set(forward_val - side_val);
 
@@ -51,36 +51,36 @@ private:
             switch (cmd) {
                 case 'q':
                 {
-                    direction_[W] = false;
-                    direction_[A] = false;
-                    direction_[S] = false;
-                    direction_[D] = false;
+                    direction_[FORWARD] = false;
+                    direction_[LEFT] = false;
+                    direction_[BACKWARD] = false;
+                    direction_[RIGHT] = false;
                     q_flag = true;
                     break;
                 }
                 case 'w':
-                    direction_[W] = true;
+                    direction_[FORWARD] = true;
                     break;
                 case 'W':
-                    direction_[W] = false;
+                    direction_[FORWARD] = false;
                     break;
                 case 'a':
-                    direction_[A] = true;
+                    direction_[LEFT] = true;
                     break;
                 case 'A':
-                    direction_[A] = false;
+                    direction_[LEFT] = false;
                     break;
                 case 's':
-                    direction_[S] = true;
+                    direction_[BACKWARD] = true;
                     break;
                 case 'S':
-                    direction_[S] = false;
+                    direction_[BACKWARD] = false;
                     break;
                 case 'd':
-                    direction_[D] = true;
+                    direction_[RIGHT] = true;
                     break;
                 case 'D':
-                    direction_[D] = false;
+                    direction_[RIGHT] = false;
                     break;
             }
             if (q_flag) break;

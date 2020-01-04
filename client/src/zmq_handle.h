@@ -27,9 +27,6 @@ public:
     void stopZMQ() {
         {
             std::unique_lock<std::mutex> lock(mutex_);
-            zmqpp::message request;
-            request << "q";
-            socket_.send(request, true);
             interrupted_ = true;
         }
         sub_thread_.join();

@@ -7,6 +7,8 @@
 
 int main(int argc, char **argv)
 {
+    std::ios_base::sync_with_stdio(false);
+
     Gui gui;
     ZMQ_Handle server;
 
