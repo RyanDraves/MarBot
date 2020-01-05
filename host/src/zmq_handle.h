@@ -44,6 +44,7 @@ private:
     void pubStatus() {
         try {
             bool is_interrupted = false;
+            int heartbeat_count = 0;
             std::string buffer_copy;
             while (!is_interrupted) {
                 // Must begin with sleep... constructor race condition shhh...
@@ -59,6 +60,10 @@ private:
                     std::unique_lock<std::mutex> lock(mutex_);
                     is_interrupted = interrupted_;
                     buffer_copy = buffer_;
+                    if (++heartbeat_count >= 0) {
+                        heartbeat_count = 0;
+                        buffer_copy += '.';
+                    }
                     buffer_.clear();
                 }
             }

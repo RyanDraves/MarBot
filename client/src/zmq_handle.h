@@ -42,8 +42,16 @@ private:
         try {
             // Must begin with sleep... constructor race condition shhh...
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            while(!interrupted_){
-                reactor_.poll(1000);
+            int watchdog = 0;
+            while (!interrupted_) {
+                bool is_event = reactor_.poll(1000);
+                if (!is_event) {
+                    watchdog += 1
+                    if (watchdog >= 60) interrupted_ = true;
+                }
+                else {
+                    watchdog = 0;
+                }
             }
         }
         catch (zmqpp::zmq_internal_exception& e) {
