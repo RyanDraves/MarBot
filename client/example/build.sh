@@ -1,1 +1,0 @@
-g++ -std=c++11 example/zmq_handle.cpp -o example/test.o -lpthread -lzmq -lzmqpp

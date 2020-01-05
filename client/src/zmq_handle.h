@@ -37,37 +37,9 @@ public:
         buffer_.clear();
         return ret;
     }
-    void onQPress() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'q'; }
-    void onQRelease() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'Q'; }
-    void onWPress() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'w'; }
-    void onWRelease() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'W'; }
-    void onAPress() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'a'; }
-    void onARelease() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'A'; }
-    void onSPress() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 's'; }
-    void onSRelease() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'S'; }
-    void onDPress() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'd'; }
-    void onDRelease() { std::unique_lock<std::mutex> lock(mutex_); buffer_ += 'D'; }
 private:
     void subStatus() {
         try {
-            // bool is_interrupted = false;
-            // std::string buffer_copy;
-            // while (!is_interrupted) {
-            //     std::this_thread::sleep_for(std::chrono::milliseconds(10));
-
-            //     if (!buffer_copy.empty()) {
-            //         zmqpp::message request;
-            //         request << buffer_copy;
-            //         socket_.send(request, true);
-            //     }
-
-            //     {
-            //         std::unique_lock<std::mutex> lock(mutex_);
-            //         is_interrupted = interrupted_;
-            //         buffer_copy = buffer_;
-            //         buffer_.clear();
-            //     }
-            // }
             // Must begin with sleep... constructor race condition shhh...
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
             while(!interrupted_){
@@ -96,7 +68,7 @@ private:
     std::thread sub_thread_;
 
     zmqpp::context zmq_context_;
-    zmqpp::socket socket_;    
+    zmqpp::socket socket_;
     zmqpp::reactor reactor_;
     std::string buffer_;
 };

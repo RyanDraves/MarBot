@@ -40,7 +40,7 @@ public:
 
         // std::cerr << "left: " << forward_val + side_val << " right: " << forward_val - side_val << std::endl;
         l_motor_.set(forward_val + side_val);
-        r_motor_.set(forward_val - side_val);
+        r_motor_.set(-(forward_val - side_val));
 
         return running;
     }
@@ -81,6 +81,8 @@ private:
                     break;
                 case 'D':
                     direction_[RIGHT] = false;
+                    break;
+                default:
                     break;
             }
             if (q_flag) break;
