@@ -46,7 +46,7 @@ private:
             while (!interrupted_) {
                 bool is_event = reactor_.poll(1000);
                 if (!is_event) {
-                    watchdog += 1
+                    ++watchdog;
                     if (watchdog >= 60) interrupted_ = true;
                 }
                 else {
