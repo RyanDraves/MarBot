@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/uma/UMA/MarBot/ros-noetic/src/marbot_teleop_controller/include/marbot_teleop_controller/controller_context.h
+vector
+-
+functional
+-
+
+/home/uma/UMA/MarBot/ros-noetic/src/marbot_teleop_controller/include/marbot_teleop_controller/keyboard_controller.h
+map
+-
+SDL2/SDL.h
+-
+iostream
+-
+exception
+-
+string
+-
+memory
+-
+controller_context.h
+/home/uma/UMA/MarBot/ros-noetic/src/marbot_teleop_controller/include/marbot_teleop_controller/controller_context.h
+
+/home/uma/UMA/MarBot/ros-noetic/src/marbot_teleop_controller/src/keyboard_controller.cpp
+marbot_teleop_controller/keyboard_controller.h
+/home/uma/UMA/MarBot/ros-noetic/src/marbot_teleop_controller/src/marbot_teleop_controller/keyboard_controller.h
+marbot_teleop_controller/controller_context.h
+/home/uma/UMA/MarBot/ros-noetic/src/marbot_teleop_controller/src/marbot_teleop_controller/controller_context.h
+
