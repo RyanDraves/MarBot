@@ -1,8 +1,0 @@
-prefix=/home/uma/UMA/MarBot/ros-noetic/devel
-
-Name: marbot_teleop
-Description: Description of marbot_teleop
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
