@@ -1,0 +1,14 @@
+<!--
+  This file manages starting up WSL2 Ros Bridge alongside the controller node
+-->
+
+<launch>
+    <include file="$(find wsl2_ros_bridge)/launch/connect.launch">
+        <arg name="remote_host" value="192.168.1.138"/>
+        <arg name="connections_file" value="$(find marbot_teleop_controller)/cfg/connections.csv"/>
+    </include>
+
+    <node type="marbot_teleop_controller_node" name="marbot_teleop_controller_node" pkg="marbot_teleop_controller"
+      output="screen" required="true">
+    </node>
+</launch>

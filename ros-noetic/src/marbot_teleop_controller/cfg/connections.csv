@@ -1,0 +1,2 @@
+Topic,Msg Type,Direction
+/control/input,std_msgs/String,a-to-b

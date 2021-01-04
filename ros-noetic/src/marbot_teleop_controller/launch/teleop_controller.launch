@@ -1,0 +1,9 @@
+<!--
+  This file manages starting up the controller node
+-->
+
+<launch>
+    <node type="marbot_teleop_controller_node" name="marbot_teleop_controller_node" pkg="marbot_teleop_controller"
+      output="screen" required="true">
+    </node>
+</launch>

@@ -1,0 +1,9 @@
+<!--
+  This file manages starting up the teleop node
+-->
+
+<launch>
+    <node type="marbot_teleop_node" name="marbot_teleop_node" pkg="marbot_teleop"
+      output="screen" required="true">
+    </node>
+</launch>
