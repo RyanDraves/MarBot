@@ -9,5 +9,5 @@
     </include>
 
     
-    <include file="%(find marbot_teleop_controller_node)/launch/teleop_controller.launch" />
+    <include file="$(find marbot_teleop_controller_node)/launch/teleop_controller.launch" />
 </launch>
