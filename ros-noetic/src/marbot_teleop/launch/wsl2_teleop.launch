@@ -1,0 +1,9 @@
+<!--
+  This file manages starting up the teleop node
+-->
+
+<launch>
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
+    <include file="%(find marbot_teleop)/launch/teleop.launch" />
+</launch>

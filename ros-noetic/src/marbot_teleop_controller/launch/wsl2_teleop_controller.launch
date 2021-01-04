@@ -8,7 +8,6 @@
         <arg name="connections_file" value="$(find marbot_teleop_controller)/cfg/connections.csv"/>
     </include>
 
-    <node type="marbot_teleop_controller_node" name="marbot_teleop_controller_node" pkg="marbot_teleop_controller"
-      output="screen" required="true">
-    </node>
+    
+    <include file="%(find marbot_teleop_controller_node)/launch/teleop_controller.launch" />
 </launch>
