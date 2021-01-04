@@ -1,0 +1,3 @@
+[submodule "ros-noetic/src/wsl2_ros_bridge"]
+	path = ros-noetic/src/wsl2_ros_bridge
+	url = git@github.com:RyanDraves/wsl2_ros_bridge.git
