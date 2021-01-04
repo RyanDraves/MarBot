@@ -15,7 +15,7 @@ class ROS_Handle {
 public:
     ROS_Handle()
     {
-        control_input_pub_ = nh_.advertise<std_msgs::String>("point_cloud_segments", 1);
+        control_input_pub_ = nh_.advertise<std_msgs::String>("/control/input", 1);
     }
     void onKeyPress(const std::string &key)
     {

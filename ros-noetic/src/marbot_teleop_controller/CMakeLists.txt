@@ -10,6 +10,7 @@ project(marbot_teleop_controller)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  roslib
   std_msgs
 )
 
